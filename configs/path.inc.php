@@ -6,6 +6,7 @@ define('PROJECT_NAME', '');
 // c:\www
 $config['webpath'] = $_SERVER['DOCUMENT_ROOT'];
 
+
 // http://locahost
 $config['docroot'] = "http://".$_SERVER['HTTP_HOST'];
 
@@ -20,8 +21,10 @@ set_include_path(get_include_path().PATH_SEPARATOR.$config['webpath']);		// ini_
 
 //define ('SITE_FOLDER', $config['webpath']);
 // Admin Directorys.
-define('ADMIN_FOLDER', 'jobadmin');
+define('ADMIN_FOLDER', 'adm');
 $config['adminroot'] = $config['docroot'].'/'.ADMIN_FOLDER;		// http://localhost/jobadmin
+
+$config['inc'] = dirname(__FILE__);
 
 
 define ('__DEBUG__', 'true');
