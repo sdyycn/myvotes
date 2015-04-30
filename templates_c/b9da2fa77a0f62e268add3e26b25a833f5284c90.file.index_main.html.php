@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2015-04-30 09:45:56
+<?php /* Smarty version Smarty-3.1.12, created on 2015-04-30 09:54:10
          compiled from "E:\work\workspace\myvotes\adm\templates\index_main.html" */ ?>
-<?php /*%%SmartyHeaderCode:42395541ddb44db564-72328952%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:150125541dfa2e129f7-92583792%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'b9da2fa77a0f62e268add3e26b25a833f5284c90' => 
     array (
       0 => 'E:\\work\\workspace\\myvotes\\adm\\templates\\index_main.html',
-      1 => 1430377807,
+      1 => 1430380432,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '42395541ddb44db564-72328952',
+  'nocache_hash' => '150125541dfa2e129f7-92583792',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_5541ddb4558584_14341679',
+  'unifunc' => 'content_5541dfa2e87d15_55065820',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5541ddb4558584_14341679')) {function content_5541ddb4558584_14341679($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8" <?php echo '?>';?>
+<?php if ($_valid && !is_callable('content_5541dfa2e87d15_55065820')) {function content_5541dfa2e87d15_55065820($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8" <?php echo '?>';?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -33,7 +33,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <base href="<?php echo $_smarty_tpl->tpl_vars['baseurl']->value;?>
 " />
 <title>系统首页</title>
-<link href="common/style.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 <!--
 function bgchang()

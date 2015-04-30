@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2015-04-30 09:45:56
+<?php /* Smarty version Smarty-3.1.12, created on 2015-04-30 09:54:10
          compiled from "E:\work\workspace\myvotes\adm\templates\index_left.html" */ ?>
-<?php /*%%SmartyHeaderCode:218155541ddb4495055-68428589%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:72325541dfa2deb8f1-47347919%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '4426748c59a15668001e7feb7299451618e6919b' => 
     array (
       0 => 'E:\\work\\workspace\\myvotes\\adm\\templates\\index_left.html',
-      1 => 1430379483,
+      1 => 1430380435,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '218155541ddb4495055-68428589',
+  'nocache_hash' => '72325541dfa2deb8f1-47347919',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_5541ddb45258f0_73275462',
+  'unifunc' => 'content_5541dfa2e8fa13_64388778',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5541ddb45258f0_73275462')) {function content_5541ddb45258f0_73275462($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8" <?php echo '?>';?>
+<?php if ($_valid && !is_callable('content_5541dfa2e8fa13_64388778')) {function content_5541dfa2e8fa13_64388778($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8" <?php echo '?>';?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,7 +32,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <base href="<?php echo $_smarty_tpl->tpl_vars['baseurl']->value;?>
 " />
-<link href="common/style.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="scripts/menu.js"></script>
 <title>Insert title here</title>
 </head>

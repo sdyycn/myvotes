@@ -1,7 +1,7 @@
-﻿<?php
+<?php
 /*
  * @author: maweiguo
- * 
+ * @date: 2015/04/30
  */
 
 chdir(dirname(__FILE__));

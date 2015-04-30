@@ -25,7 +25,7 @@ set_include_path(get_include_path().PATH_SEPARATOR.$config['webpath']);		// ini_
 define('ADMIN_FOLDER', 'adm');
 $config['adminroot'] = $config['docroot'].'/'.ADMIN_FOLDER;		// http://localhost/jobadmin
 
-
+$config['debug'] = 'true';
 define ('__DEBUG__', 'true');
 
 function trace($msg){

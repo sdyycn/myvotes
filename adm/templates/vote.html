@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<base href="<{$baseurl}>" />
-<link href="common/style.css" rel="stylesheet" type="text/css" />
+<base href="<!--{$baseurl}-->" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 <title>Insert title here</title>
 </head>
 <body id="right" class="main1">
@@ -22,14 +22,6 @@
     </tr>
   </thead>
   <tbody>
-  <{foreach from=$users item=user}>
-    <tr>
-      <td width="351"><{$user.name}></td>
-       <td width="351"><{$user.type}></td>
-       <td>ok</td>
-      <td width="145"><a href="<{$adminroot}>/userpage.php?act=delete&id=<{$user.id}>"  onclick="return confirm('确认删除？')" class="btn2">删除</a></td>
-    </tr>
-    <{/foreach}>
   </tbody>
 </table>
 </body>
