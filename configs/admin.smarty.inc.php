@@ -12,9 +12,9 @@ $smarty->force_compile = true;
 $smarty->debugging = true;
 $smarty->caching = false;
 $smarty->cache_lifetime = "";
-$smarty->template_dir = $_SERVER['DOCUMENT_ROOT']."/jobadmin/templates"; 
-$smarty->compile_dir = $_SERVER['DOCUMENT_ROOT']."/templates_c"; 
-$smarty->cache_dir = $_SERVER['DOCUMENT_ROOT']."/cache";  
-$smarty->left_delimiter = "<{"; //设置左边界符
-$smarty->right_delimiter = "}>"; //设置右边界符
+$smarty->template_dir = $config["webpath"]."/adm/templates"; 
+$smarty->compile_dir = $config["webpath"]."/templates_c"; 
+$smarty->cache_dir = $config["webpath"]."/cache";  
+$smarty->left_delimiter = "<!--{"; //设置左边界符
+$smarty->right_delimiter = "}-->"; //设置右边界符
 ?>

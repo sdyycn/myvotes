@@ -11,6 +11,6 @@ $web = getWebseo($db);
 $webtitle = $web[0]["sitename"]; 
 $webkeywords = $web[0]["sitekeywords"]; 
 $webdesp =$web[0]["sitedescribe"]; 
-$copyright = "极限子软件有限公司";
-$author = "极限子软件有限公司";
+$copyright = "软件有限公司";
+$author = "软件有限公司";
 ?>

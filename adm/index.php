@@ -30,7 +30,7 @@ class TopFramePage extends AdminPage{
 			$ip = "IP: ".$_SESSION['lastloginip'];
 		}
 
-		$welcome = "你好, $username 欢迎光临以太乔布斯网站管理系统 $lastlogin $ip";
+		$welcome = "你好, $username  $lastlogin $ip";
 
 		$this->smarty->assign('welcome', $welcome);
 		
@@ -84,8 +84,8 @@ class AdminIndexPage extends AdminPage{
 
 			case 'index':
 			default:
-				$page = new AdminPage("admin_index.html");
-				$page->smarty->assign('title', "以太乔布斯网站管理系统");
+				$page = new AdminPage("index.html");
+				$page->smarty->assign('title', "网站管理系统");
 				break;
 		}
 		$page->display();

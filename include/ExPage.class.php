@@ -45,7 +45,7 @@ class Page implements IPage{
 	/**
 	 * page title
 	 */
-	protected $title = 'LimiJobs';
+	protected $title = 'votes';
 	
 	/**
 	 * smarty object
@@ -89,8 +89,8 @@ class Page implements IPage{
 		$this->smarty->template_dir = $this->phppath."/templates"; 
 		$this->smarty->compile_dir = $this->phppath."/templates_c"; 
 		$this->smarty->cache_dir = $this->phppath."/cache";  
-		$this->smarty->left_delimiter = "<{";
-		$this->smarty->right_delimiter = "}>";
+		$this->smarty->left_delimiter = "<!--{";
+		$this->smarty->right_delimiter = "}-->";
 		
 //		$this->page = $page;
 	}	

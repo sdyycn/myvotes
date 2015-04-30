@@ -5,13 +5,11 @@
  */
 
 chdir(dirname(__FILE__));
-echo $config['inc'];
 require_once '../configs/path.inc.php';
-echo $config['inc'];
-require_once $config['inc'].'include/ExPDO.class.php';
+require_once 'include/ExPDO.class.php';
 require_once 'configs/function.php';
-require_once ADMIN_FOLDER.'/JobsAdminSession.class.php';
-require_once 'include/JobsPage.class.php';
+require_once ADMIN_FOLDER.'/AdminSession.class.php';
+require_once 'include/ExPage.class.php';
 
 class AdminLoginPage extends AdminPage {
 	private $username = null;

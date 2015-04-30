@@ -6,10 +6,10 @@
 
 chdir(dirname(__FILE__));
 require_once '../configs/path.inc.php';
-require_once 'include/JobsPDO.class.php';
+require_once 'include/ExPDO.class.php';
 require_once 'configs/function.php';
-require_once ADMIN_FOLDER.'/JobsAdminSession.class.php';
-require_once 'include/JobsPage.class.php';
+require_once ADMIN_FOLDER.'/AdminSession.class.php';
+require_once 'include/ExPage.class.php';
 
 class AdminLoginPage extends AdminPage {
 	private $username = null;
@@ -39,7 +39,7 @@ class AdminLoginPage extends AdminPage {
 	}
 	
 	private function handler_logout(){
-		JobsAdminSession::logout();
+		AdminSession::logout();
 	}
 
 	private function form_check_login(){
@@ -49,7 +49,7 @@ class AdminLoginPage extends AdminPage {
 		} else {
 			$this->validateCode = $_REQUEST['yzcode'];
 		}
-		if (!JobsAdminSession::checkValidateCode($this->validateCode)){
+		if (!AdminSession::checkValidateCode($this->validateCode)){
 			alert("验证码不正确！", "login.php");
 			return false;
 		}

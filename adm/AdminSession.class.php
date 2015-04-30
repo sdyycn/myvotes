@@ -3,7 +3,7 @@ chdir(dirname(__FILE__));
 require_once '../configs/path.inc.php';
 require_once '/configs/function.php';
 
-class JobsAdminSession{
+class AdminSession{
 // username
 // usertype
 // lastloginip
@@ -92,7 +92,7 @@ class JobsAdminSession{
 	}
 	
 	static function logout(){
-		 JobsAdminSession::destroy();
+		 AdminSession::destroy();
 //		 JobsCookie::logout();
 	}
 }
