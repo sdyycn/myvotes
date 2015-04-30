@@ -2,55 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>站点信息配置</title>
+<base href="<!--{$baseurl}-->" />
+<title><!--{$title}--></title>
 <link href="/templates/jobadmin/common/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body id="right" class="main1">
 <div class="ttitle">
   <h1>网站本信息配置</h1>
 </div>
-<?php
-/*
- * 站点基本信息配置
- * @author mwg
- * @date 2013-06-17
-*/
-require '../../configs/config.php';
-require '../../configs/function.php';
-require '../check.php';
-//读取配置信息
-function getSiteconfig($db){
-	$sql = "select * from ejob_siteconfig  where  configid =  1";
-    $result = $db->query($sql);	 
-	$site = array();
-	$site=$db->fetch_assoc($result);
-	return  $site;
-	}
-$site = array();
-$site = getSiteconfig($db);
-//更改配置信息
-function  updateSiteconfig($db,$table,$data,$condition){
-	if($db->update($table,$data,$condition)){
-		return "true";
-		}
-	 else{
-		 return "false";
-		 }
-	}
-//根据传递参数来判断
-if ($_GET["act"]=="editsave"){
-	$table="ejob_siteconfig";
-	$data = array("sitename"=>$_POST["sitename"],"siteurl"=>$_POST["siteurl"],"sitekeywords"=>$_POST["sitekeywords"],"sitedescribe"=>$_POST["sitedescribe"],"siteicp"=>$_POST["siteicp"],"siteqq"=>$_POST["siteqq"],"siteclose"=>$_POST["siteclose"],"siteclosenote"=>$_POST["siteclosenote"]);
-	$condition="where  configid =  1";
-	if (updateSiteconfig($db,$table,$data,$condition)){
-		alert("修改成功！", "webconfig.php");
-		}
-	else{
-		alert("修改失败！", "webconfig.php");
-		}
-	}
-?>
-<br />
+
 <table class="detail-layout">
   <tbody>
     <tr>

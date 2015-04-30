@@ -140,7 +140,7 @@ nofocus:expression(this.onFocus=this.blur());
 }
 #left {
 	border-top:1px solid #BCC1C7;
-	background: url(../images/linebg.gif) repeat-y right center;
+	background: url(../images/menu_bg.jpg) repeat-y right center;
 }
 #left .ttitle {
 	height:29px;
