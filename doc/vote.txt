@@ -1,0 +1,23 @@
+主题: xxxx的投票 类型
+
+1. 题目1
+ a.item 文字输入
+ b.单选
+ c.多选  图片/文字
+
+2. 题目2
+ a.
+ b.
+
+
+数据库表:
+1. 管理员表 	可以创建主题和参与用户  0- 超级管理员，创建管理员
+2. 用户表   	参与投票的人		vote_user(uid, name, sex, ...)
+3. 投票主题表	投票的主题 和 类型  	vote_title(tid, name, type)
+4. 问题表				vote_question(qid, vid, name, ...)
+5. 答案选项表	各种答案		vote_answer(aid, qid, vid, name, type)
+6. 投票结果 				vote_result(rid, uid, tid, qid, aid)
+
+
+
+smarty.
