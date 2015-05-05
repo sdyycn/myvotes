@@ -10,27 +10,23 @@ if ($config['debug'] == 'false')
 	require_once ADMIN_FOLDER.'/check.php';
 
 require_once 'include/ExPage.class.php';
+require_once 'Vote.class.php';
 
 class VotePage extends AdminPage{
 	function __construct(){
-		parent::__construct("vote.html");
+		parent::__construct();
 	}
 	
 	function display(){
 		$page = null;
 		switch ($this->page)
-		{
-			case 'title':
-				$page = new AdminPage("vote_title.html");
+		{	
+			case 'create':
+				$page = new VoteCreatePage;
 				break;
-			case 'question':
-				$page = new AdminPage("vote_question.html");
-				break;
-			case 'result':
-				$page = new AdminPage("vote_result.html");
-				break;
+			case 'list':
 			default:
-				$page = new AdminPage("vote.html");
+				$page = new VoteListPage;
 				break;
 		}
 		$page->display();

@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2015-04-30 09:54:10
+<?php /* Smarty version Smarty-3.1.12, created on 2015-05-05 07:21:25
          compiled from "E:\work\workspace\myvotes\adm\templates\index_left.html" */ ?>
-<?php /*%%SmartyHeaderCode:72325541dfa2deb8f1-47347919%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:12204554853555d13e8-28835955%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '4426748c59a15668001e7feb7299451618e6919b' => 
     array (
       0 => 'E:\\work\\workspace\\myvotes\\adm\\templates\\index_left.html',
-      1 => 1430380435,
+      1 => 1430791395,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '72325541dfa2deb8f1-47347919',
+  'nocache_hash' => '12204554853555d13e8-28835955',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_5541dfa2e8fa13_64388778',
+  'unifunc' => 'content_554853556b7b91_98979923',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5541dfa2e8fa13_64388778')) {function content_5541dfa2e8fa13_64388778($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8" <?php echo '?>';?>
+<?php if ($_valid && !is_callable('content_554853556b7b91_98979923')) {function content_554853556b7b91_98979923($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8" <?php echo '?>';?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -42,7 +42,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </div>
 <dl>
   <dt onclick="javascript:show(this);">基本信息配置</dt>
-  <dd><img src="images/menu_icon.gif" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /config/siteinfo.php" target="mainFrame">网站信息配置</a></dd>
 </dl>
 <dl>
@@ -56,7 +56,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </dl>
 <dl>
   <dt onclick="javascript:show(this);">会员管理</dt>
-  <dd><img src="images/menu_icon.gif" /><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /job/jobpost.php" target="mainFrame">个人会员管理</a></dd>
   <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /job/joblist.php" target="mainFrame">企业会员管理</a></dd>
@@ -64,11 +64,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <dl>
   <dt onclick="javascript:show(this);">投票管理</dt>
   <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
-/votes/votepage.php?page=title" target="mainFrame">主题管理</a></dd>
+/votes/votepage.php?page=list" target="mainFrame">我的投票</a></dd>
   <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
-/votes/votepage.php?page=question" target="mainFrame">题目管理</a></dd>
+/votes/votepage.php?page=create" target="mainFrame">创建投票</a></dd>
+</dl>
+<dl>
+  <dt onclick="javascript:show(this);">问卷管理</dt>
   <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
-/votes/votepage.php?page=result" target="mainFrame">查看结果</a></dd>
+/votes/pollpage.php?page=list" target="mainFrame">我的问卷</a></dd>
+  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/votes/pollpage.php?page=create" target="mainFrame">创建问卷</a></dd>
 </dl>
 <dl>
   <dt onclick="javascript:show(this);">资讯管理</dt>
@@ -81,6 +86,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </dl>
 <dl>
   <dt onclick="javascript:show(this);">广告管理</dt>
+  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/ad/messagelist.php" target="mainFrame">广告管理</a></dd>
+  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/ad/messagelist.php" target="mainFrame">广告添加</a></dd>
+</dl>
+<dl>
+  <dt onclick="javascript:show(this);">管理</dt>
   <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /ad/messagelist.php" target="mainFrame">广告管理</a></dd>
   <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>

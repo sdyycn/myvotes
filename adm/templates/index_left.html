@@ -14,7 +14,7 @@
 </div>
 <dl>
   <dt onclick="javascript:show(this);">基本信息配置</dt>
-  <dd><img src="images/menu_icon.gif" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="<!--{$adminroot}-->/config/siteinfo.php" target="mainFrame">网站信息配置</a></dd>
+  <dd><a href="<!--{$adminroot}-->/config/siteinfo.php" target="mainFrame">网站信息配置</a></dd>
 </dl>
 <dl>
   <dt onclick="javascript:show(this);">账户管理</dt>
@@ -24,14 +24,18 @@
 </dl>
 <dl>
   <dt onclick="javascript:show(this);">会员管理</dt>
-  <dd><img src="images/menu_icon.gif" /><a href="<!--{$adminroot}-->/job/jobpost.php" target="mainFrame">个人会员管理</a></dd>
+  <dd><a href="<!--{$adminroot}-->/job/jobpost.php" target="mainFrame">个人会员管理</a></dd>
   <dd><a href="<!--{$adminroot}-->/job/joblist.php" target="mainFrame">企业会员管理</a></dd>
 </dl>
 <dl>
   <dt onclick="javascript:show(this);">投票管理</dt>
-  <dd><a href="<!--{$adminroot}-->/votes/votepage.php?page=title" target="mainFrame">主题管理</a></dd>
-  <dd><a href="<!--{$adminroot}-->/votes/votepage.php?page=question" target="mainFrame">题目管理</a></dd>
-  <dd><a href="<!--{$adminroot}-->/votes/votepage.php?page=result" target="mainFrame">查看结果</a></dd>
+  <dd><a href="<!--{$adminroot}-->/votes/votepage.php?page=list" target="mainFrame">我的投票</a></dd>
+  <dd><a href="<!--{$adminroot}-->/votes/votepage.php?page=create" target="mainFrame">创建投票</a></dd>
+</dl>
+<dl>
+  <dt onclick="javascript:show(this);">问卷管理</dt>
+  <dd><a href="<!--{$adminroot}-->/votes/pollpage.php?page=list" target="mainFrame">我的问卷</a></dd>
+  <dd><a href="<!--{$adminroot}-->/votes/pollpage.php?page=create" target="mainFrame">创建问卷</a></dd>
 </dl>
 <dl>
   <dt onclick="javascript:show(this);">资讯管理</dt>
@@ -41,6 +45,11 @@
 </dl>
 <dl>
   <dt onclick="javascript:show(this);">广告管理</dt>
+  <dd><a href="<!--{$adminroot}-->/ad/messagelist.php" target="mainFrame">广告管理</a></dd>
+  <dd><a href="<!--{$adminroot}-->/ad/messagelist.php" target="mainFrame">广告添加</a></dd>
+</dl>
+<dl>
+  <dt onclick="javascript:show(this);">管理</dt>
   <dd><a href="<!--{$adminroot}-->/ad/messagelist.php" target="mainFrame">广告管理</a></dd>
   <dd><a href="<!--{$adminroot}-->/ad/messagelist.php" target="mainFrame">广告添加</a></dd>
 </dl>
