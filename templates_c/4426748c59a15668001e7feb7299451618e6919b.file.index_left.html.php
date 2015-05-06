@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2015-05-05 07:21:25
+<?php /* Smarty version Smarty-3.1.12, created on 2015-05-06 05:05:42
          compiled from "E:\work\workspace\myvotes\adm\templates\index_left.html" */ ?>
-<?php /*%%SmartyHeaderCode:12204554853555d13e8-28835955%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:14223554985060d2337-09997320%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '4426748c59a15668001e7feb7299451618e6919b' => 
     array (
       0 => 'E:\\work\\workspace\\myvotes\\adm\\templates\\index_left.html',
-      1 => 1430791395,
+      1 => 1430881539,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '12204554853555d13e8-28835955',
+  'nocache_hash' => '14223554985060d2337-09997320',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_554853556b7b91_98979923',
+  'unifunc' => 'content_55498506166a50_98039881',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_554853556b7b91_98979923')) {function content_554853556b7b91_98979923($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8" <?php echo '?>';?>
+<?php if ($_valid && !is_callable('content_55498506166a50_98039881')) {function content_55498506166a50_98039881($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8" <?php echo '?>';?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -71,9 +71,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <dl>
   <dt onclick="javascript:show(this);">问卷管理</dt>
   <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
-/votes/pollpage.php?page=list" target="mainFrame">我的问卷</a></dd>
+/polls/pollpage.php?page=list" target="mainFrame">我的问卷</a></dd>
   <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
-/votes/pollpage.php?page=create" target="mainFrame">创建问卷</a></dd>
+/polls/pollpage.php?page=create" target="mainFrame">创建问卷</a></dd>
 </dl>
 <dl>
   <dt onclick="javascript:show(this);">资讯管理</dt>

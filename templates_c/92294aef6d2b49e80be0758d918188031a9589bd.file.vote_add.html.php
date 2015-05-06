@@ -1,0 +1,233 @@
+<?php /* Smarty version Smarty-3.1.12, created on 2015-05-05 08:06:37
+         compiled from "E:\work\workspace\myvotes\adm\templates\vote_add.html" */ ?>
+<?php /*%%SmartyHeaderCode:1820455485ded00e447-38456205%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '92294aef6d2b49e80be0758d918188031a9589bd' => 
+    array (
+      0 => 'E:\\work\\workspace\\myvotes\\adm\\templates\\vote_add.html',
+      1 => 1430805994,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '1820455485ded00e447-38456205',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_55485ded07ba54_63714148',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_55485ded07ba54_63714148')) {function content_55485ded07ba54_63714148($_smarty_tpl) {?><!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container bodycontainer">
+<h2>创建投票</h2>
+<div class="row-fluid">
+	<div class="span8">
+	<form class="form-horizontal" method="post" target="posthere" action="vote.php?action=createvote" onsubmit="return checkCreateVoteForm();" autocomplete="off">
+		<input type="hidden" name="action" value="createvote">
+		<input type="hidden" name="op" value="dosavevote">
+		<legend>投票基本设置</legend>
+		    
+		<div class="control-group" id="inputTitleDiv">
+		    <label class="control-label" for="inputTitle">投票标题</label>
+			<div class="controls">
+			 	<input type="text" name="votetitle" id="inputTitle" placeholder="请输入投票标题" mouseev="true" keyev="true" style="padding-right: 0px; cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+			    <span class="help-inline"></span>
+			</div>
+		</div>
+		
+		<div class="control-group">
+		    <label class="control-label" for="">投票类型</label>
+			<div class="controls">
+			    <label class="radio">
+					<input type="radio" id="inputVotetype" name="votetype" class="votetype" value="0" checked=""> 单选
+				</label>
+			    <label class="radio">
+					<input type="radio" name="votetype" value="1" class="votetype"> 多选
+				</label>
+			    </div>
+		    </div>
+		   
+			<div class="control-group" id="inputMaxselDiv" style="display: none;">
+		    <label class="control-label" for="">做多选择几项</label>
+			    <div class="controls">
+			    <input type="text" name="maxselection" id="inputMaxsel" placeholder="0" value="0" class="span2">
+			    <span class="help-inline">设置最多选择几项，0为不限制</span>
+			    </div>
+		    </div>
+
+		   	<div class="control-group" id="moresetting" style="display: none;">
+		   		<label class="control-label" for="">&nbsp;</label>
+				<div class="controls"><button type="button" class="btn">更多设置</button></div>
+		   </div>
+			
+		   <!--start morevoteset--->
+		   <div id="morevoteset" style="">
+			    <div class="control-group">
+					<label class="control-label" for="">投票隐私</label>
+				    <div class="controls">
+				    <label class="radio">
+						<input class="voteviewtype" type="radio" id="inputViewtypel" name="public" value="0" checked=""> 任何人可查看和投票
+					</label>
+				    <label class="radio">
+						<input class="voteviewtype" type="radio" name="public" value="1"> 凭密码查看和投票
+					</label>
+				    </div>
+			    </div>
+		    
+			    <div class="control-group" style="display:none" id="inputVotepwdDiv">
+					<label class="control-label" for="inputVotepwd">密码 </label>
+				    <div class="controls">
+						<input type="text" name="voteviewpasswd" id="inputVotepwd" placeholder="请输入密码">
+				    </div>
+			    </div>
+		    
+		    
+			    <div class="control-group">
+					<label class="control-label" for="">投票后才能查看结果？</label>
+				    <div class="controls">
+						<label class="radio">
+							<input type="radio" id="inputViewresult" name="aftervote" value="0" checked=""> 否
+							<span class="help-inline">不投票即可看到当前的投票选项分布情况</span>
+						</label>
+						<label class="radio">
+							<input type="radio" name="aftervote" value="1"> 是
+							<span class="help-inline">只有在提交投票后才可看到投票选项分布情况</span>
+						</label>
+				    </div>
+			    </div>
+		    
+			    <div class="control-group">
+					<label class="control-label" for="inputExpairtime">投票截止时间 :</label>
+				    <div style="margin-left:19px;" class="controls input-append date form_datetime" data-date="2015-05-04 08:18:03" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input1">
+				        <input size="16" type="text" value="" id="inputExpairtime" name="expairtime" readonly="">
+				        <span class="add-on"><i class="icon-remove"></i></span>
+						<span class="add-on"><i class="icon-th"></i></span>		
+				    </div>
+				    <span class="help-inline">不选则没有截止日期</span>
+			    </div>
+		    </div>
+		    <!--end morevoteset--->
+			
+		    <div class="control-group">
+				<button type="button" class="btn" id="addcontent" style="display: none;">添加投票说明内容</button>
+			</div>
+			
+			<div id="addcontentdiv" style="">
+				<legend>投票说明内容</legend>
+				<div class="control-group">UEditor
+				</div>
+			</div>
+			
+		    <legend>投票选项</legend>
+		    
+		    <div class="voteoptions">
+			    <div class="control-group">
+			    	<div class="input-prepend">
+						<span class="add-on add-on-num" id="oporder_1">1</span>
+						<input class="span6 voteoptions" name="voteoptions[]" id="voteOptioninput" type="text" placeholder="请输入投票选项" style="width:430px;">
+						<input type="hidden" name="opimageids[]" value="" class="opimageid">
+						<div class="oppicmodify">
+						<span class="add-on addoppicdone"></span>
+						<span class="add-on deloppic"><i class="icon-remove" title="删除图片"></i></span>
+						</div>
+						
+						<span class="add-on addoppic"><a href="http://www.stonepoll.com/action/pop_uploadoptionimage.html?id=1" data-trigger="modal" data-title="添加图片"><i class="icon-picture" title="添加图片"></i></a></span>
+						
+					</div>
+				</div>
+				<div class="control-group" id="voteoptionforcopy">
+					<div class="input-prepend">
+						<span class="add-on add-on-num" id="oporder_2">2</span> 
+						<input class="span6 voteoptions" name="voteoptions[]" id="prependedInput" type="text" placeholder="请输入投票选项" style="width:430px;">
+						
+						<input type="hidden" name="opimageids[]" value="" class="opimageid">
+						<div class="oppicmodify">
+							<div class="add-on addoppicdone">
+							</div>
+							<span class="add-on deloppic"><i class="icon-remove" title="删除图片"></i></span>
+						</div>
+						
+						<span class="add-on addoppic"><a href="http://www.stonepoll.com/action/pop_uploadoptionimage.html?id=2" data-trigger="modal" data-title="添加图片"><i class="icon-picture" title="添加图片"></i></a></span>
+						
+					</div>
+				</div>
+				
+			<div class="control-group">
+					<div class="input-prepend">
+						<span class="add-on add-on-num" id="oporder_3">3</span> 
+						<input class="span6 voteoptions" name="voteoptions[]" id="prependedInput" type="text" placeholder="请输入投票选项" style="width:430px;">
+						
+						<input type="hidden" name="opimageids[]" value="" class="opimageid">
+						<div class="oppicmodify" style="display: none;">
+							<div class="add-on addoppicdone"></div>
+							<span class="add-on deloppic"><i class="icon-remove" title="删除图片"></i></span>
+						</div>
+						
+						<span class="add-on addoppic"><a href="http://www.stonepoll.com/action/pop_uploadoptionimage.html?id=3" data-trigger="modal" data-title="添加图片"><i class="icon-picture" title="添加图片"></i></a></span>
+						
+					</div>
+				</div></div>
+			<div class="control-group">
+				<button type="button" class="btn" id="addvoteoption">增加选项</button>
+			</div>
+			
+			
+		    <div class="control-group" id="voteOtherinputDiv">
+		    	<div class="input-prepend">
+					<span class="add-on">其他</span>
+					<input class="span6 voteoptions" name="" id="voteOtherinput" type="text" placeholder="其他选项用于当没有用户满意的选项时，用户可以输入自己的内容" style="width:430px;">
+					<span class="add-on">
+					<label class="checkbox">
+					<input type="checkbox" id="enableothers" value="1" name="enableothers">启用其他选项
+					</label>
+					</span>
+					
+				</div>
+				<span class="help-inline"></span>
+			</div>
+
+			<div class="control-group">
+				<button type="button" class="btn" id="addaftervotecontent">添加投票后显示的内容</button>
+			</div>
+			<div id="addaftervotecontentdiv" style="display:none;">
+				<legend>投票后显示的内容</legend>
+				
+				<div class="control-group">
+				<textarea name="aftervotecontent" id="aftervotecontent"></textarea>
+				</div>
+			</div>
+			</div>
+			
+			
+			<div class="control-group" id="inputAgreeDiv">
+			    <label class="checkbox " style="color:red">
+					 <input type="checkbox" id="inputAgree" name="inputagree" value="1"><i class="icon-warning-sign"></i> 我同意投票服务条款 <a href="http://www.stonepoll.com/v/b05fca0a-291f-744f-e0a3-5ecbb613d6f3.html" target="_blank">查看</a>
+					 <span class="help-inline"></span>
+				</label>
+		    </div>
+		    
+		    
+			<div class="alert" id="submitalertdiv" style="display:none;">
+	  		<h4></h4>
+	  		<span></span>
+			</div>
+			
+			
+			<div class="control-group" style="margin-bottom:100px;">
+				<button type="submit" class="btn btn-primary createvotesubmitbtn" id="docreatevote">创建投票</button>
+				
+			</div>
+			
+			
+		    </form>
+	</div>
+</body>
+</html><?php }} ?>
