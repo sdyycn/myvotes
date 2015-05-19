@@ -4,37 +4,25 @@
 * @author maweiguo
 * @version 1.0
 * @date 2013/7/12
-* @class JobsPDO
+* @class ExPDO
 * 
 */
 
 chdir(dirname(__FILE__));
 
-$table['ejob_newssort'] = "ejob_newssort";		// 资讯类别 
-$table['ejob_news'] 	= "ejob_news";			// 资讯信息
-$table['ejob_admin'] 	= "ejob_admin";			// 系统管理员账户
-$table['ejob_uperson'] 	= "ejob_uperson";       //jobs个人用户
-$table['ejob_ucompany'] = "ejob_ucompany";      //jobs企业用户
+$table['newssort'] = "newssort";		// 资讯类别 
+$table['news'] 	= "news";				// 资讯信息
+$table['admin'] 	= "admin";			// 系统管理员账户
 
-$table['eth_ucenter']	= 'eth_ucenter';		// ucenter.eth_ucenter;
-
-$table['ejob_perinterview']	= 'ejob_perinterview';
-$table['ejob_ucompany']	= 'ejob_ucompany';
-$table['ejob_recruit']	= 'ejob_recruit';
-$table['ejob_perapply']	= 'ejob_perapply';
-$table['ejob_perfavorite']	= 'ejob_perfavorite';
-$table['ejob_comapplyer']	= 'ejob_comapplyer';
-
-
-class UCPDO extends MPDO{
+class ExPDO extends MPDO{
 	public function __construct(){
 		// next we can read the dsn info from file: config.ini
 		$dbms = 'mysql';
 		$host = '10.10.8.64';
-		$dbName = 'ucenter';
+		$dbName = 'eclipse';
 		$dsn = "$dbms:host=$host;dbname=$dbName";
 
-		parent::__construct($dsn, 'limijobs', '123456');
+		parent::__construct($dsn, 'cms', '123456');
 	}
 }
 

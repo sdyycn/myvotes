@@ -9,7 +9,7 @@
 </head>
 <body id="right" class="main1">
 <div class="ttitle">
-	<h1>我的投票</h1>
+	<h1>我的问卷</h1>
 </div>
 <table class="list-layout wd-500" >
   <thead>
@@ -26,7 +26,7 @@
     	<td width="351"><!--{$vote.id}--></td>
       	<td width="351"><!--{$vote.title}--></td>
        	<td width="351">OPEN</td>
-      	<td width="145"><a href="<{$adminroot}>/userpage.php?act=delete&id=<{$user.id}>"  onclick="return confirm('确认删除？')" class="btn2">删除</a></td>
+      	<td width="145"><a href="<!--{$adminroot}-->/pollpage.php?act=delete&id=<!--{$poll.id}-->"  onclick="return confirm('确认删除？')" class="btn2">删除</a></td>
     </tr>
     <!--{/foreach}-->
   </tbody>

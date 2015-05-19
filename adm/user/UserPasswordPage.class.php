@@ -8,7 +8,7 @@
 
 chdir(dirname(__FILE__));
 require_once '../../configs/path.inc.php';
-require_once 'include/JobsPage.class.php';
+require_once 'include/ExPage.class.php';
 require_once 'include/Logs.class.php';
 
 class UserPasswordPage extends AdminPage{

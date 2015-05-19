@@ -10,7 +10,7 @@ if ($config['debug'] == 'false')
 	require_once ADMIN_FOLDER.'/check.php';
 
 require_once ADMIN_FOLDER.'/user/AdminUser.class.php';
-require_once 'include/JobsPage.class.php';
+require_once 'include/ExPage.class.php';
 require_once ADMIN_FOLDER.'/user/UserListPage.class.php';
 require_once ADMIN_FOLDER.'/user/UserAddPage.class.php';
 require_once ADMIN_FOLDER.'/user/UserPasswordPage.class.php';

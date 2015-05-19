@@ -8,9 +8,9 @@
 
 chdir(dirname(__FILE__));
 require_once '../../configs/path.inc.php';
-require_once 'include/JobsPage.class.php';
+require_once 'include/ExPage.class.php';
 require_once 'include/Logs.class.php';
-require_once 'include/JobsPDO.class.php';
+require_once 'include/ExPDO.class.php';
 
 class UserAddPage extends AdminPage{
 	private $username = null;

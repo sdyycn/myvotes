@@ -8,9 +8,9 @@
 
 chdir(dirname(__FILE__));
 require_once '../../configs/path.inc.php';
-require_once 'include/JobsPage.class.php';
+require_once 'include/ExPage.class.php';
 require_once 'include/Logs.class.php';
-require_once 'include/JobsPDO.class.php';
+require_once 'include/ExPDO.class.php';
 
 class UserListPage extends AdminPage{
 	function __construct(){
@@ -19,11 +19,13 @@ class UserListPage extends AdminPage{
 	
 	function display(){
 		// fix the page data here
-		$table = $GLOBALS['table']['ejob_admin'];
-		$sql = "SELECT id, username as name, CASE WHEN usertype = 1 THEN '超级管理员' ELSE '普通管理员' END as type FROM $table";
-		$pdo = new JobsPDO();
+		$table = $GLOBALS['table']['admin'];
+		$sql = "SELECT id, name, CASE WHEN gid = 0 THEN '超级管理员' ELSE '普通管理员' END, status FROM $table";
+		$pdo = new ExPDO();
 		$stmt = $pdo->query($sql);
 		$users = $stmt->fetchAll();
+		
+//		trace($users);
 		
 		$this->smarty->assign('users', $users);
 		$this->smarty->assign('adminroot', $this->adminroot.'/user');

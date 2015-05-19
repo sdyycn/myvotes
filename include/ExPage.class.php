@@ -148,6 +148,8 @@ class AdminPage extends Page{
 		if ($page != null){
 			$this->page = $page;
 		}
+//		trace($this->action);
+//		trace($this->page);
 		
 		parent::__construct();
 

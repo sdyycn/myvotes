@@ -2,12 +2,12 @@
 /*
  * @author: maweiguo
  * 
- * @table: ejob_admin
+ * @table: admin
  * 	字段				字段说明			数据类型				备注
  * @id				自增长ID			smallint	
- * @username		用户名			varchar(60)	
+ * @name			用户名			varchar(60)	
  * @password		密码				varchar(120)	
- * @usertype		用户级别			tinyint				超级管理员|普通管理员
+ * @type			用户级别			tinyint				超级管理员|普通管理员
  * @islock			用户是否锁定		tinyint	
  * @lastloginip		上次登录IP		varchar(60)	
  * @lastlogintime	上次登录时间		datetime	
@@ -20,7 +20,7 @@
 chdir(dirname(__FILE__));
 require_once '../../configs/path.inc.php';
 require_once 'configs/function.php';
-require_once 'include/JobsPDO.class.php';
+require_once 'include/ExPDO.class.php';
 
 class AdminUser {
 	private $username = null;
@@ -32,8 +32,8 @@ class AdminUser {
 	private $url = null;
 	
 	function AdminUser($id, $username, $password, $oldpassword){
-		$this->table = $GLOBALS['table']['ejob_admin']; 
-		$this->pdo = new JobsPDO();
+		$this->table = $GLOBALS['table']['admin']; 
+		$this->pdo = new ExPDO();
 
 		$this->id = $id;
 		$this->username = $username;
