@@ -216,3 +216,4 @@ pip-log.txt
 
 # php smarty
 template_c/
+logs/
