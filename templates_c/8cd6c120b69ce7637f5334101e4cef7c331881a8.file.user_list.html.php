@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2015-05-19 09:33:36
+<?php /* Smarty version Smarty-3.1.12, created on 2015-05-22 10:16:23
          compiled from "E:\work\workspace\myvotes\adm\templates\user_list.html" */ ?>
-<?php /*%%SmartyHeaderCode:28524555ae750db22b8-49011272%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:26642555ee5d7652ac9-82991216%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '8cd6c120b69ce7637f5334101e4cef7c331881a8' => 
     array (
       0 => 'E:\\work\\workspace\\myvotes\\adm\\templates\\user_list.html',
-      1 => 1432020814,
+      1 => 1432282571,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '28524555ae750db22b8-49011272',
+  'nocache_hash' => '26642555ee5d7652ac9-82991216',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_555ae750e17bc9_86704992',
+  'unifunc' => 'content_555ee5d76d3960_89412680',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_555ae750e17bc9_86704992')) {function content_555ae750e17bc9_86704992($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_555ee5d76d3960_89412680')) {function content_555ee5d76d3960_89412680($_smarty_tpl) {?><!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -39,42 +39,37 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 
 <script type="text/javascript">
+$(function(){
+	$('#dlg_add').dialog('close');
+	$('#dlg_edit').dialog('close');
+})
 	function doSearch(){
 		alert("do search");
 		return false;
 	}
-	
-	function addUser(){
-		$('#dg').edatagrid('addRow');
-	}
-	
-	function saveUser(){
-		$('#dg').edatagrid('saveRow');
-	}
-	
-	function destroyUser(){
-		$('#dg').edatagrid('destroyRow');
-	}
-	
-	function cancelUser(){
-		$('#dg').edatagrid('cancelRow');
-	}
-	
+
 	var editIndex = undefined;
 	function endEditing(){
-		if (editIndex == undefined){return true}
+		if (editIndex == undefined){
+//			alert("editIndex undefined.");
+			return true;
+		}
+		
 		if ($('#dg').datagrid('validateRow', editIndex)){
-			var ed = $('#dg').datagrid('getEditor', {index:editIndex,field:'productid'});
-			var productname = $(ed.target).combobox('getText');
-			$('#dg').datagrid('getRows')[editIndex]['productname'] = productname;
+//			alert("111");
+			var ed = $('#dg').datagrid('getEditor', {index:editIndex,field:'id'});
+			var name = $(ed.target).combobox('getText');
+			$('#dg').datagrid('getRows')[editIndex]['name'] = productname;
 			$('#dg').datagrid('endEdit', editIndex);
 			editIndex = undefined;
 			return true;
 		} else {
+			alert("222");
 			return false;
 		}
 	}
 	function onClickRow(index){
+		return false;
 		if (editIndex != index){
 			if (endEditing()){
 				$('#dg').datagrid('selectRow', index)
@@ -103,6 +98,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		if (endEditing()){
 			$('#dg').datagrid('acceptChanges');
 		}
+		
+		return false;
 	}
 	function reject(){
 		$('#dg').datagrid('rejectChanges');
@@ -112,14 +109,43 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		var rows = $('#dg').datagrid('getChanges');
 		alert(rows.length+' rows are changed!');
 	}
+	
+	//////////////////////////////
+	function addUser(){
+//		alert("popup window add user");
+		$('#dlg_add').dialog('open');
+		return false;
+	}
+	
+	function deleteUser(){
+		alert("remove user");
+		return false;
+	}
+	
+	function editUser(){
+//		alert("edit user");
+		$('#dlg_edit').dialog('open');
+		
+		return false;
+	}
+	
+	function getSelected(){
+		var row = $('#dg').datagrid('getSelected');
+		if (row){
+			$.messager.alert('Info', row.id+":"+row.name+":"+row.email);
+		}
+		return false;
+	}
+
 </script>
 
 
 </head>
-<body id="right" class="main1">
+<body id="right" class="main1" style="width:800px">
 
 <table id="dg" class="easyui-datagrid" title="管理员账户" style="width:700px;height:auto"
 			data-options="singleSelect:true,
+			rownumbers:true,
 			toolbar:'#tb',
 			url:'<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /userOpt.php?act=list',method:'get',
@@ -141,16 +167,82 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <div id="tb" style="padding:5px;height:auto">
 
-		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="return addUser();">添加</a>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="return destroyRow();">删除</a>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="return saveRow();">保存</a>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="return cancelRow();">取消</a>
+<!-- 		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="return addUser();">添加</a>-->
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="return addUser();">添加</a>
 
+<!-- 		<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="return editUser();">修改</a> -->
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="return editUser();">修改</a>
+		
+		<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="return deleteUser();">删除</a>
+		
+		<a href="#" class="easyui-linkbutton" onclick="return getSelected();">GetSelected</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<span>账户名:</span>
 		<input id="name" style="line-height:22px;border:1px solid #ccc">
 		<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="return doSearch()">搜索</a>
 
 </div>
+
+<div id="dlg_edit" class="easyui-dialog" title="修改账户" style="width:700px;height:auto;padding:10px"
+			data-options="
+				iconCls: 'icon-edit',
+				buttons: [{
+					text:'保存',
+					iconCls:'icon-ok',
+					handler:function(){
+						alert('ok');
+					}
+				},{
+					text:'关闭',
+					handler:function(){
+						$('#dlg_edit').dialog('close');
+					}
+				}]
+			">
+	<div>
+		<form id="ff" class="easyui-form" method="post" data-options="novalidate:true">
+	    	<table cellpadding="5">
+	    		<tr>
+	    			<td>用户名:</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" data-options="required:true"></input></td>
+	    		</tr>
+	    		
+	    		<tr>
+	    			<td>所在组:</td>
+	    			<td><input class="easyui-textbox" type="text" name="group" data-options="required:true"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>状态:</td>
+	    			<td><input class="easyui-textbox" name="message" data-options="required:true"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>Email:</td>
+	    			<td><input class="easyui-textbox" type="text" name="email" data-options="required:true,validType:'email'"></input></td>
+	    		</tr>
+	    	</table>
+	    </form>
+	</div>
+</div>
+<div id="dlg_add" class="easyui-dialog" title="添加帐户" style="width:700px;height:auto;padding:10px"
+			data-options="
+				iconCls: 'icon-add',
+				buttons: [{
+					text:'保存',
+					iconCls:'icon-ok',
+					handler:function(){
+						alert('ok');
+					}
+				},{
+					text:'关闭',
+					handler:function(){
+						$('#dlg_add').dialog('close');
+					}
+				}]
+			">
+		The dialog content.
+	</div>
+
 
 </body>
 </html><?php }} ?>
