@@ -13,7 +13,7 @@ require_once 'include/Logs.class.php';
 
 class UserListPage extends AdminPage{
 	function __construct(){
-		parent::__construct('user_edit');
+		parent::__construct('user_list');
 	}
 	
 	function display(){

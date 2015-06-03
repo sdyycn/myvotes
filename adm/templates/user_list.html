@@ -12,119 +12,100 @@
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 
 <script type="text/javascript">
-$(function(){
-	$('#dlg_add').dialog('close');
-	$('#dlg_edit').dialog('close');
-})
 	function doSearch(){
 		alert("do search");
 		return false;
 	}
 
-	var editIndex = undefined;
-	function endEditing(){
-		if (editIndex == undefined){
-//			alert("editIndex undefined.");
-			return true;
-		}
-		
-		if ($('#dg').datagrid('validateRow', editIndex)){
-//			alert("111");
-			var ed = $('#dg').datagrid('getEditor', {index:editIndex,field:'id'});
-			var name = $(ed.target).combobox('getText');
-			$('#dg').datagrid('getRows')[editIndex]['name'] = productname;
-			$('#dg').datagrid('endEdit', editIndex);
-			editIndex = undefined;
-			return true;
-		} else {
-			alert("222");
-			return false;
-		}
-	}
-	function onClickRow(index){
-		return false;
-		if (editIndex != index){
-			if (endEditing()){
-				$('#dg').datagrid('selectRow', index)
-						.datagrid('beginEdit', index);
-				editIndex = index;
-			} else {
-				$('#dg').datagrid('selectRow', editIndex);
-			}
-		}
-	}
-	function append(){
-		if (endEditing()){
-			$('#dg').datagrid('appendRow',{status:'P'});
-			editIndex = $('#dg').datagrid('getRows').length-1;
-			$('#dg').datagrid('selectRow', editIndex)
-					.datagrid('beginEdit', editIndex);
-		}
-	}
-	function removeit(){
-		if (editIndex == undefined){return}
-		$('#dg').datagrid('cancelEdit', editIndex)
-				.datagrid('deleteRow', editIndex);
-		editIndex = undefined;
-	}
-	function accept(){
-		if (endEditing()){
-			$('#dg').datagrid('acceptChanges');
-		}
-		
-		return false;
-	}
-	function reject(){
-		$('#dg').datagrid('rejectChanges');
-		editIndex = undefined;
-	}
-	function getChanges(){
-		var rows = $('#dg').datagrid('getChanges');
-		alert(rows.length+' rows are changed!');
-	}
-	
 	//////////////////////////////
-	function addUser(){
-//		alert("popup window add user");
-		$('#dlg_add').dialog('open');
+	var url = null;
+	function onAddUser(){
+//		alert("添加账户");
+		$('#dlg').dialog('open').dialog('setTitle','New User');
+		$('#fm').form('clear');
+
+		url = '<!--{$adminroot}-->/userpage.php?act=add';
+		return false;
+	}
+
+	function onEditUser(){
+//		alert("请选择需要修改的账户！");
+		var row = $('#dg').datagrid('getSelected');
+		 
+		if (row){
+//			$("#userid").attr("disabled","true");
+		//	$("#userid").hide();
+			$('#dlg').dialog('open').dialog('setTitle','Edit User');
+			$('#fm').form('load', row);
+
+			url = '<!--{$adminroot}-->/userpage.php?act=edit';
+		}
 		return false;
 	}
 	
-	function deleteUser(){
-		alert("remove user");
-		return false;
+	function saveUser(){
+//		alert(url);
+		$('#fm').form('submit',{
+			url:url,
+			onSubmit:function(){
+				return $(this).form('validate');
+			},
+			success:function(result){
+				$('#dlg').dialog('close'); // close the dialog
+				$('#dg').datagrid('reload'); // reload the user data
+				//*/
+				var result = eval('('+result+')');
+				if (result.errorMsg){
+					$.messager.show({
+						title: 'Error',
+						msg: result.errorMsg
+					});
+				} else {
+					$('#dlg').dialog('close'); // close the dialog
+					$('#dg').datagrid('reload'); // reload the user data
+				}
+				//*/
+			}
+		});
 	}
 	
-	function editUser(){
-//		alert("edit user");
-//		$('#ff').form('load', 'form_data1.json');
-		$('#dlg_edit').dialog('open');
-		
-		return false;
+	function onDeleteUser(){
+		var row = $('#dg').datagrid('getSelected');
+		var url = "<!--{$adminroot}-->/userpage.php?act=delete";
+		if (row){
+			$.messager.confirm('Confirm','Are you sure you want to destroy this user?',function(r){
+				if (r){
+					$.post(url, {id:row.id}, function(result){
+						$('#dg').datagrid('reload');
+						/*/
+						if (result.success){
+							$('#dg').datagrid('reload'); // reload the user data
+						} else {
+							$.messager.show({ // show error message
+								title: 'Error',
+								msg: result.errorMsg
+							});
+						}
+						//*/
+					},'json');
+				}
+			});
+			$('#dg').datagrid('reload');
+		}
 	}
-	
-	function getSelected(){
+
+	function onGetSelected(){
 		var row = $('#dg').datagrid('getSelected');
 		if (row){
 			$.messager.alert('Info', row.id+":"+row.name+":"+row.email);
 		}
 		return false;
 	}
-
 </script>
-
-
 </head>
-<body id="right" class="main1" style="width:800px">
-
-<table id="dg" class="easyui-datagrid" title="管理员账户" style="width:700px;height:auto"
-			data-options="singleSelect:true,
-			rownumbers:true,
-			toolbar:'#tb',
-			url:'<!--{$adminroot}-->/adminopt.php?act=list', method:'get',
-			onClickRow:onClickRow,
-			pagination:true
-			">
+<body>
+<table id="dg" class="easyui-datagrid" title="会员账户" style="width:700px;height:auto"
+data-options="singleSelect:'true',rownumbers:'true',toolbar:'#tb',pagination:'true',url:'<!--{$adminroot}-->/userpage.php?act=list', method:'get'">
 	<thead>
 		<tr>
 			<th field="ck" checkbox="true"></th>
@@ -139,83 +120,52 @@ $(function(){
 </table>
 
 <div id="tb" style="padding:5px;height:auto">
+		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="return onAddUser();">添加</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="return onEditUser();">修改</a>	
+		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="return onDeleteUser();">删除</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton" onclick="return onGetSelected();">GetSelected</a>
 
-<!-- 		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="return addUser();">添加</a>-->
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="return addUser();">添加</a>
-
-<!-- 		<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="return editUser();">修改</a> -->
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="return editUser();">修改</a>
-		
-		<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="return deleteUser();">删除</a>
-		
-		<a href="#" class="easyui-linkbutton" onclick="return getSelected();">GetSelected</a>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		<span>账户名:</span>
 		<input id="name" style="line-height:22px;border:1px solid #ccc">
-		<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="return doSearch()">搜索</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="return doSearch();">搜索</a>
 
 </div>
 
-<div id="dlg_edit" class="easyui-dialog" title="修改账户" style="width:700px;height:auto;padding:10px"
-			data-options="
-				iconCls: 'icon-edit',
-				buttons: [{
-					text:'保存',
-					iconCls:'icon-ok',
-					handler:function(){
-						alert('ok');
-					}
-				},{
-					text:'关闭',
-					handler:function(){
-						$('#dlg_edit').dialog('close');
-					}
-				}]
-			">
-	<div>
-		<form id="ff" class="easyui-form" method="post" data-options="novalidate:true">
-	    	<table cellpadding="5">
-	    		<tr>
-	    			<td>用户名:</td>
-	    			<td><input class="easyui-textbox" type="text" name="name" data-options="required:true"></input></td>
-	    		</tr>
-	    		
-	    		<tr>
-	    			<td>所在组:</td>
-	    			<td><input class="easyui-textbox" type="text" name="group" data-options="required:true"></input></td>
-	    		</tr>
-	    		<tr>
-	    			<td>状态:</td>
-	    			<td><input class="easyui-textbox" name="message" data-options="required:true"></input></td>
-	    		</tr>
-	    		<tr>
-	    			<td>Email:</td>
-	    			<td><input class="easyui-textbox" type="text" name="email" data-options="required:true,validType:'email'"></input></td>
-	    		</tr>
-	    	</table>
-	    </form>
+<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px;" closed="true" buttons="#dlg-buttons">
+	<div class="ftitle"></div>
+	<form id="fm" method="post" novalidate="">
+		<div class="fitem">
+			<label>User ID</label>
+			<input id="userid" name="uid" class="easyui-textbox" required="true">
+		</div>
+
+		<div class="fitem">
+			<label>User Name:</label>
+			<input name="name" class="easyui-textbox" required="true">
+		</div>
+		
+		<div class="fitem">
+			<label>Password:</label>
+			<input name="password" class="easyui-textbox" required="true">
+		</div>
+		
+		<div class="fitem">
+			<label>Repeat Password:</label>
+			<input name="password2" class="easyui-textbox" required="true">
+		</div>
+
+		<div class="fitem">
+			<label>Email</label>
+			<input name="email" class="easyui-textbox">
+		</div>
+	</form>
+	</div>
+ 
+	<div id="dlg-buttons">
+		<a href="javascript:void(0)" class="easyui-linkbutton c6" iconcls="icon-ok" onclick="saveUser()" style="width:90px">Save</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
 	</div>
 </div>
-<div id="dlg_add" class="easyui-dialog" title="添加帐户" style="width:700px;height:auto;padding:10px"
-			data-options="
-				iconCls: 'icon-add',
-				buttons: [{
-					text:'保存',
-					iconCls:'icon-ok',
-					handler:function(){
-						alert('ok');
-					}
-				},{
-					text:'关闭',
-					handler:function(){
-						$('#dlg_add').dialog('close');
-					}
-				}]
-			">
-		The dialog content.
-	</div>
-
-
 </body>
 </html>

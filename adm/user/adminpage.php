@@ -17,7 +17,7 @@ require_once ADMIN_FOLDER.'/user/AdminEditPage.class.php';
 
 
 // UserPage Controller
-class UserPage extends AdminPage{
+class AdminUserPage extends AdminPage{
 	function __construct(){
 		parent::__construct();
 	}
@@ -114,5 +114,5 @@ class UserPage extends AdminPage{
 	}
 }
 
-$page = new UserPage;
+$page = new AdminUserPage;
 $page->run();

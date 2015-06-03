@@ -23,7 +23,7 @@ require_once 'configs/function.php';
 require_once 'include/ExPDO.class.php';
 
 // Admin User CRUD class
-class AdminUser {
+class User {
 	private $uid = null;
 	private $username = null;
 	private $password = null;
@@ -36,8 +36,8 @@ class AdminUser {
 	
 	private $url = null;
 	
-	function AdminUser($id, $uid, $username, $password, $password2, $status, $email){
-		$this->table = $GLOBALS['table']['admin']; 
+	function User($id, $uid, $username, $password, $password2, $status, $email){
+		$this->table = $GLOBALS['table']['user']; 
 		$this->pdo = new ExPDO();
 
 		$this->id = $id;
@@ -48,7 +48,8 @@ class AdminUser {
 		$this->status = $status;
 		$this->email = $email;
 		
-		$this->url = $GLOBALS['config']['adminroot']."/user/adminpage.php";
+		$this->url = $GLOBALS['config']['adminroot']."/user/userpage.php";
+	//	alert($this->username, $this->url);
 	}
 	
 	function doAction($action){
@@ -100,7 +101,8 @@ class AdminUser {
 		$table = $this->table;
 		$pdo = $this->pdo;
 //*/
-		$sql = "SELECT * from $table  WHERE  uid = '$this->uid'";
+		$sql = "SELECT * from $table WHERE uid = '$this->uid'";
+//		alert($sql, $url_add);
 		if ($pdo->rowCountSql($sql) > 0){
 			alert("用户名已存在!", $url_add);
 			return;
@@ -109,15 +111,22 @@ class AdminUser {
 		
 		$password = md5($this->password);
 		$sql = "INSERT INTO $table (uid, name, pwd, status, email) VALUES('$this->uid', '$this->username', '$this->password', 0, '$this->email')";
-		
-		if ($pdo->exec($sql) < 1) {
-//			trace($pdo->errorInfo());
-			alert("管理员添加失败!", $url_add);
-		//	alert($sql, $url_add);
-		//	alert($pdo->errorInfo()[2], $url_add);
-		}
+//		alert($sql, $url_add);
 
-		alert("管理员添加成功!", $url_add);
+		if ($pdo->exec($sql) > 0) {
+			$res['status'] = 'true';
+			$res['msg'] = "添加成功!";
+			$res['id'] = $id;
+			//			alert("管理员添加成功!", $url_list);
+		} else {
+			//			alert("管理员添加失败!", $url_list);
+			$res['status'] = 'false';
+			$res['msg'] = "添加失败: ";
+			$res['sql'] = $sql;
+			$res['error'] = $pdo->errorInfo();
+		}
+		
+		return json_encode($res);
 	}
 	
 	private function delete(){
@@ -151,6 +160,7 @@ class AdminUser {
 			$res['error'] = $pdo->errorInfo();
 		}
 		
+//		echo json_encode(array('success'=>true));
 		return json_encode($res);
 	}
 	
@@ -228,6 +238,7 @@ class AdminUser {
 			$sql = "SELECT uid, name, status, email FROM $table WHERE id=$this->id";
 		}
 	//	trace($sql);
+	//	alert($sql);
 		$pdo = new ExPDO();
 		$stmt = $pdo->query($sql);
 		$users = $stmt->fetchAll();
