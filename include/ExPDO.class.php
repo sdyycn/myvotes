@@ -14,6 +14,7 @@ $table['newssort'] 	= "newssort";		// 资讯类别
 $table['news'] 		= "news";			// 资讯信息
 $table['admin'] 	= "admin";			// 系统管理员账户
 $table['user'] 		= "user";			// 会员账户
+$table['cls'] 		= "menu";		// 栏目
 
 class ExPDO extends MPDO{
 	public function __construct(){
