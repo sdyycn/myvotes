@@ -215,5 +215,6 @@ pip-log.txt
 .mr.developer.cfg
 
 # php smarty
-template_c/
+template_c/*
 logs/
+templates_c/4426748c59a15668001e7feb7299451618e6919b.file.index_left.html.php
