@@ -36,7 +36,7 @@ function trace($msg){
 }
 
 function __autoload($class_name) {
-    require_once 'include/'.$class_name . 'class.php';
+//    require_once 'include/'.$class_name . 'class.php';
 }
 
 

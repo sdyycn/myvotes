@@ -163,7 +163,7 @@ class AdminPage extends Page{
 	}
 }
 
-class JobsPage extends Page{
+class JobsPage extends Page{		// FrontPage
 	function __construct($page = null){
 		if (isset($_REQUEST['page'])){
 			$this->page = $_REQUEST['page'];

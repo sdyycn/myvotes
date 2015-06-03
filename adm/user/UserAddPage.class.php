@@ -13,8 +13,10 @@ require_once 'include/Logs.class.php';
 require_once 'include/ExPDO.class.php';
 
 class UserAddPage extends AdminPage{
+	private $uid = null;
+	private $pwd = null;
 	private $username = null;
-	private $password = null;
+	private $email = null;
 	
 	function __construct(){
 		parent::__construct('user_add');
@@ -22,7 +24,7 @@ class UserAddPage extends AdminPage{
 	
 	function display(){
 		// fix the page data here
-		$this->smarty->assign('username', $_SESSION['username']);
+//		$this->smarty->assign('username', $_SESSION['username']);
 		$this->smarty->assign('adminroot', $this->adminroot.'/user');
 		parent::display();
 	}
@@ -30,17 +32,31 @@ class UserAddPage extends AdminPage{
 	private function form_check_useradd(){
 		$url_add = $this->adminroot.'/user/userpage.php?page=add';
 	
-		if (!empty($_REQUEST['username'])){
-			$this->username = $_REQUEST['username'];
+		if (!empty($_REQUEST['uid'])){
+			$this->uid = $_REQUEST['uid'];
 		} else {
 			alert('用户名不能为空', $url_add);
 			return false;
 		}
 		
 		if (!empty($_REQUEST['password'])){
-			$this->password = $_REQUEST['password'];
+			$this->pwd = $_REQUEST['password'];
 		} else {
 			alert('密码不能为空', $url_add);
+			return false;
+		}
+		
+		if (!empty($_REQUEST['username'])){
+			$this->username = $_REQUEST['username'];
+		} else {
+			alert('请输入用户姓名', $url_add);
+			return false;
+		}
+		
+		if (!empty($_REQUEST['email'])){
+			$this->email = $_REQUEST['email'];
+		} else {
+			alert('请输入EMAIL', $url_add);
 			return false;
 		}
 		
@@ -52,18 +68,19 @@ class UserAddPage extends AdminPage{
 			return;
 		}
 		
-		$table = $GLOBALS['table']['ejob_admin'];
-		$pdo = new JobsPDO;
-		$sql = "SELECT * FROM $table  WHERE  username = '$this->username'";
+		$table = $GLOBALS['table']['admin'];
+		$pdo = new ExPDO;
+		$sql = "SELECT * FROM $table  WHERE  uid = '$this->uid'";
 		if ($pdo->rowCountSql($sql) > 0){
 			alert("用户名已存在!", $url_add);
 			return;
 		}
 		
-		$password = md5($this->password);
-		$sql = "INSERT INTO $table (username, usertype, password) VALUES('$this->username', 0, '$password')";
+		$password = md5($this->pwd);
+		$sql = "INSERT INTO $table (uid, name, type, pwd, email, status) VALUES('$this->uid', '$this->username', 0, '$password', '$this->email', 1)";
+
 		if ($pdo->exec($sql) < 1) {
-//			trace($pdo->errorInfo());
+			trace($pdo->errorInfo());
 			alert("管理员添加失败!", $url_add);
 		}
 

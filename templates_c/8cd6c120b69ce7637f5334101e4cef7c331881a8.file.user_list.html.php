@@ -1,8 +1,35 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1.12, created on 2015-05-23 09:29:43
+         compiled from "E:\work\workspace\myvotes\adm\templates\user_list.html" */ ?>
+<?php /*%%SmartyHeaderCode:2671755602c67182301-66894968%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '8cd6c120b69ce7637f5334101e4cef7c331881a8' => 
+    array (
+      0 => 'E:\\work\\workspace\\myvotes\\adm\\templates\\user_list.html',
+      1 => 1432365323,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '2671755602c67182301-66894968',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'baseurl' => 0,
+    'adminroot' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_55602c672031a7_87671608',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_55602c672031a7_87671608')) {function content_55602c672031a7_87671608($_smarty_tpl) {?><!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<base href="<!--{$baseurl}-->" />
+<base href="<?php echo $_smarty_tpl->tpl_vars['baseurl']->value;?>
+" />
 <title>Insert title here</title>
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -121,7 +148,8 @@ $(function(){
 			data-options="singleSelect:true,
 			rownumbers:true,
 			toolbar:'#tb',
-			url:'<!--{$adminroot}-->/adminopt.php?act=list', method:'get',
+			url:'<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/adminopt.php?act=list', method:'get',
 			onClickRow:onClickRow,
 			pagination:true
 			">
@@ -218,4 +246,4 @@ $(function(){
 
 
 </body>
-</html>
+</html><?php }} ?>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+	function submitEditUserForm(){
+		$('#fmodifyuser').form('submit',{
+			url: '<!--{$adminroot}-->/adminpage.php?act=edit',
+			onSubmit:function(){
+				return $(this).form('enableValidation').form('validate');
+			}
+		});
+		return false;
+	}
+</script>
+
+<div>
+
+<form id="fmodifyuser" method="post">
+   	<table cellpadding="5">
+   		<tr>
+   			<td>用户名:</td>
+   			<td>
+   				<input class="easyui-textbox" type="text" name="uid" value="<!--{$user.uid}-->" readonly="true"></input>
+   			</td>
+   			<td>姓名:</td>
+   			<td>
+   				<input class="easyui-textbox" type="text" name="username" value="<!--{$user.name}-->" data-options="required:true"></input>
+   			</td>
+   		</tr>
+   		<tr>
+   			<td>密码:</td>
+   			<td><input id="pwd" class="easyui-validatebox" type="password" name="password" data-options="required:true"></input></td>
+   			<td>再次输入:</td>
+   			<td><input id="rpwd" class="easyui-validatebox" type="password" name="password2" required="required" validType="equals['#pwd']" invalidMessage="输入密码不一致"></input></td>
+   		</tr>
+   		<tr>
+   			<td>状态</td>
+   			<td>启用</td>
+   			<td>EMAIL:</td>
+   			<td><input class="easyui-textbox" name="email" value="<!--{$user.email}-->" data-options="required:true,validType:'email'"></input></td>
+   		</tr>
+   		<tr>
+   			<td colspan="2"></td>
+   			<td colspan="2">
+    			<a style="margin:auto" href="javascript:void(0);" class="easyui-linkbutton" onclick="return submitEditUserForm();">修&nbsp;&nbsp;改</a>
+    		</td>
+   		</tr>
+   	</table>
+</form>
+</div>
+</body>
+</html>

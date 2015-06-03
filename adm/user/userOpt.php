@@ -39,7 +39,7 @@ class UserOpt extends AdminPage{
 	}
 	
 	function Show(){
-		$sql = "SELECT id, name, CASE WHEN gid = 0 THEN '超级管理员' ELSE '普通管理员' END, status, email FROM $this->table";
+		$sql = "SELECT id, uid, name, status, email FROM $this->table";
 		$pdo = new ExPDO();
 		$stmt = $pdo->query($sql);
 		$users = $stmt->fetchAll();

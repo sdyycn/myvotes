@@ -8,32 +8,25 @@
 <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css" />
 <script type="text/javascript" src="js/easyui/jquery.min.js"></script>
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript">
-$.extend($.fn.validatebox.defaults.rules, {
-	equals:{
-		validator:function(value, param){
-			return value==$(param[0].val();
-		},
-		message:'Field do not match.'
-	}
-})
-function submitForm(){
-	$('#ff').form('submit',{
-		onSubmit:function(){
-			return $(this).form('enableValidation').form('validate');
-		}
-	});
-}
-function clearForm(){
-	$('#ff').form('clear');
-}
-</script>
-<title>Insert title here</title>
 </head>
-<body id="right" class="main1">
-<div class="easyui-panel" title="添加账户" style="width:600px">
-	<div style="padding:10px 60px 20px 60px">
-    <form id="ff" method="post" action="<!--{$adminroot}-->/userpage.php?act=add">
+<body>
+<script type="text/javascript">
+	function submitAddUserForm(){
+		$('#faddUser').form('submit',{
+			url: '<!--{$adminroot}-->/adminpage.php?act=add',
+			onSubmit:function(){
+				return $(this).form('enableValidation').form('validate');
+			}
+		});
+		return false;
+	}
+	function clearAddUserForm(){
+		$('#faddUser').form('clear');
+		return true;
+	}
+</script>
+<div style="width:auto;height:auto">
+    <form id="faddUser" method="post" novalidate="">
     	<table cellpadding="5">
     		<tr>
     			<td>用户名:</td>
@@ -58,11 +51,14 @@ function clearForm(){
     			<td><input class="easyui-textbox" name="email" data-options="required:true,validType:'email'"></input></td>
     		</tr>
     		<tr>
-    			<td colspan="4"><input type="submit" name="submit" value="添  加"></input></td>
-    		</tr>
-    		<tr>
-    			<td colspan="2"><center><a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">添&nbsp;&nbsp;加</a></center></td>
-    			<td colspan="2"><center><a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">清&nbsp;&nbsp;除</a></center></td>
+    			<td></td>
+    			<td><center>
+	    			<a href="javascript:void(0);" class="easyui-linkbutton" onclick="return submitAddUserForm();">添&nbsp;&nbsp;加</a>
+	    		</center></td>
+	    		<td><center>
+	    			<a href="javascript:void(0);" class="easyui-linkbutton" onclick="return clearAddUserForm();">清&nbsp;&nbsp;除</a>
+    			</center></td>
+    			<td></td>
     		</tr>
     	</table>
     </form>

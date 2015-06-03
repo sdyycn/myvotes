@@ -1,9 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?php /* Smarty version Smarty-3.1.12, created on 2015-05-23 09:29:46
+         compiled from "E:\work\workspace\myvotes\adm\templates\user_add.html" */ ?>
+<?php /*%%SmartyHeaderCode:3016255602c6a1bd757-49992039%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '7e3c92c1e7f214d31e817a1a18ec76960cf4fe73' => 
+    array (
+      0 => 'E:\\work\\workspace\\myvotes\\adm\\templates\\user_add.html',
+      1 => 1432364511,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '3016255602c6a1bd757-49992039',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'baseurl' => 0,
+    'adminroot' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_55602c6a223065_07871201',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_55602c6a223065_07871201')) {function content_55602c6a223065_07871201($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8" <?php echo '?>';?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<base href="<!--{$baseurl}-->" />
+<base href="<?php echo $_smarty_tpl->tpl_vars['baseurl']->value;?>
+" />
 <link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css" />
 <script type="text/javascript" src="js/easyui/jquery.min.js"></script>
@@ -33,7 +61,8 @@ function clearForm(){
 <body id="right" class="main1">
 <div class="easyui-panel" title="添加账户" style="width:600px">
 	<div style="padding:10px 60px 20px 60px">
-    <form id="ff" method="post" action="<!--{$adminroot}-->/userpage.php?act=add">
+    <form id="ff" method="post" action="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/userpage.php?act=add">
     	<table cellpadding="5">
     		<tr>
     			<td>用户名:</td>
@@ -68,4 +97,4 @@ function clearForm(){
     </form>
 </div>
 </body>
-</html>
+</html><?php }} ?>
