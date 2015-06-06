@@ -23,33 +23,37 @@ require_once 'configs/function.php';
 require_once 'include/ExPDO.class.php';
 
 // Admin User CRUD class
-class Classes {
-	private $uid = null;
-	private $username = null;
-	private $password = null;
-	private $password2 = null;
+class Cls {
+	private $mid = null;
+	private $name = null;
+	private $type = null;
+	private $privilege = null;
+	private $pid = null;
 	private $status = null;
-	private $email = null;
+	private $directory = null;
+	private $description = null;
+	
 	private $pdo = null;
 	private $table = null;
 	private $id = null;
 	
 	private $url = null;
 	
-	function User($id, $uid, $username, $password, $password2, $status, $email){
-		$this->table = $GLOBALS['table']['user']; 
+	function Cls($id, $mid, $name, $type, $privilege, $status, $directory, $pid, $directory, $description){
+		$this->table = $GLOBALS['table']['cls']; 
 		$this->pdo = new ExPDO();
 
 		$this->id = $id;
-		$this->uid = $uid;
-		$this->username = $username;
-		$this->password = $password;
-		$this->password2 = $password2;
+		$this->mid = $mid;
+		$this->name = $name;
+		$this->type = $type;
+		$this->privilege = $privilege;
 		$this->status = $status;
-		$this->email = $email;
+		$this->pid = $pid;
+		$this->description = $description;
+		$this->directory = $directory;
 		
-		$this->url = $GLOBALS['config']['adminroot']."/user/userpage.php";
-	//	alert($this->username, $this->url);
+		$this->url = $GLOBALS['config']['adminroot']."/cls/cls.php";
 	}
 	
 	function doAction($action){
@@ -64,28 +68,11 @@ class Classes {
 			case 'edit':
 				$this->update();
 				break;
-			case 'pwd':
-				$this->updatePwd();
-				break;
 			case 'list':
 			default:
 				$this->show();
 				break;
 		}
-	}
-	
-	private function checkUser(){
-		if ($this->username == null)
-			return false;
-		
-		return true;
-	}
-
-	private function checkPassword(){
-		if ($this->password == null)
-			return false;
-		
-		return true;
 	}
 	
 	private function add(){
@@ -165,100 +152,58 @@ class Classes {
 	}
 	
 	private function update(){
-		$url_pass = $this->url.'?page=pwd';
+		$url_pass = $this->url.'?page=list';
 	
 		$table = $this->table;
 		$pdo = $this->pdo;
-		$name = $this->username;
-		$pwd = $this->password;
-		$email = $this->email;
-		$uid = $this->uid;
-	
-		$pwd = md5($this->password);
-		$sql = "UPDATE $table SET pwd = '$pwd', name='$name', email='$email' WHERE uid = '$uid'";
-//		alert($sql, $url_pass);
+
+		$sql = "UPDATE $table SET";
+		$sql .= " mid='$this->mid', name='$this->name', status=$this->status, privilege=$this->privilege,";
+		$sql .= " type=$this->type, pid=$this->pid, directory='$this->directory', description='$this->description'"; 
+		$sql .= " WHERE id = $this->id";
+	//	alert($sql, $url_pass);
 	
 		if ($pdo->exec($sql) < 1) {
 			//trace($pdo->errorInfo());
 			alert($pdo->errorInfo()[2], $url_pass);
 			//alert("账户修改失败!", $url_pass);
 		}
+		echo "菜单修改成功!";
 	
-		alert("账户修改成功!", $url_pass);
+	//	alert("账户修改成功!", $url_pass);
 	}
-	
-	private function updatePwd(){
-		$url_pass = $this->url.'?page=pwd';
-		if ($this->username == null
-		|| $this->password == null
-		|| $this->password2 == null){
-//			trace($this->username);
-//			trace($this->password);
-//			trace($this->oldpassword);
-//			alert($this->password2, $url_pass);
-			alert("密码修改失败1!", $url_pass);
-			return;
-		}
-		
-		$table = $this->table;
-		$pdo = $this->pdo;
-		$username = $this->username;
-		$oldpassword = $this->password2;
-		
-		$sql = "SELECT pwd FROM $table WHERE name = '$username'";
-	//	alert($sql, $url_pass);
-		$stmt = $pdo->query($sql);
-		$dbpass = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 
-		if ($dbpass[0] != md5($oldpassword)) {
-//			trace($pdo->errorInfo());
-			alert("密码修改失败2!", $url_pass);
-			return;
-		}
-		
-		$password = md5($this->password);
-		$sql = "UPDATE $table SET password = '$password' WHERE username = '$username'";
-		
-		if ($pdo->exec($sql) < 1) {
-//			trace($pdo->errorInfo());
-			alert("密码修改失败!", $url_pass);
-		}
-
-		alert("密码修改成功!", $url_pass);
-		
-		
-	}
-	
 	private function show(){
 		$table = $this->table;
 		$sql = null;
 		if ($this->id == null){
-			$sql = "SELECT id, uid, name, status, email FROM $table";
+			$sql = "SELECT id, name, mid, status, privilege, type, pid as _parentId, directory, description FROM $table";
+	//	$sql = "SELECT id, name, pid as _parentId FROM $table";
 		}else {
-			$sql = "SELECT uid, name, status, email FROM $table WHERE id=$this->id";
+			$sql = "SELECT id, name, mid, status, privilege, type, directory, description FROM $table WHERE id=$this->id";
 		}
 	//	trace($sql);
-	//	alert($sql);
+	//	alert($sql, $this->url);
 		$pdo = new ExPDO();
 		$stmt = $pdo->query($sql);
-		$users = $stmt->fetchAll();
-	//	trace($users);
-		
-		echo json_encode($users);
-	}
-	
-	function getUser($id){
-		if ($id == null)
-			return null;
-		
-		$table = $this->table;
-		$sql = "SELECT uid, name, status, email FROM $table WHERE id=$this->id";
+	//	alert($pdo->errorInfo()[2], $url_pass);
+		$cls = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$t;
+		$i=0;
+		foreach($cls as $a){
+			$t[$i]['id'] = (int)$a['id'];
+			$t[$i]['name'] = $a['name'];
+			$t[$i]['mid'] = $a['mid'];
+			$t[$i]['status'] = (int)$a['status'];
+			$t[$i]['privilege'] = (int)$a['privilege'];
+			$t[$i]['type'] = (int)$a['type'];
+			$t[$i]['description'] = $a['description'];
+			$t[$i]['directory'] = $a['directory'];
+			$t[$i++]['_parentId'] = (int)$a['_parentId'];	// treegrid需要
+		}
+		$str['total'] = $pdo->rowCount($stmt);
+		$str['rows'] = $t;
 
-		//	trace($sql);
-		$pdo = new ExPDO();
-		$stmt = $pdo->query($sql);
-		$users = $stmt->fetchAll();
-		
-		return $users[0];
+		echo json_encode($str);
 	}
 }

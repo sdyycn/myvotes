@@ -1,0 +1,8 @@
+{"total":7,"rows":[
+{"id":1,"name":"所有部门","_parentId":0},
+{"id":2,"name":"广东省","_parentId":1},
+{"id":3,"name":"广州市","_parentId":1},
+{"id":4,"name":"深圳","_parentId":1},
+{"id":5,"name":"白云区","_parentId":2},
+{"id":6,"name":"天河区","_parentId":2}
+]}

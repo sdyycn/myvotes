@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css" />
+<script type="text/javascript" src="js/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+$('#tt').treegrid({    
+    url:'treetest.json',    
+    idField:'id',    
+    treeField:'name',    
+    columns:[[    
+        {title:'province',field:'name',width:180}  
+    ]]    
+});  
+
+});
+
+</script>
+</head>
+<body>
+   <table id="tt" style="width:600px;height:400px"></table>  
+
+</body>
+</html>

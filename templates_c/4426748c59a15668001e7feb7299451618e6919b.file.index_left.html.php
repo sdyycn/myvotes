@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2015-06-01 10:52:04
+<?php /* Smarty version Smarty-3.1.12, created on 2015-06-06 08:54:03
          compiled from "E:\work\workspace\myvotes\adm\templates\index_left.html" */ ?>
-<?php /*%%SmartyHeaderCode:6152556c1d34471267-85736242%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:310785572990b674e97-26969307%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '4426748c59a15668001e7feb7299451618e6919b' => 
     array (
       0 => 'E:\\work\\workspace\\myvotes\\adm\\templates\\index_left.html',
-      1 => 1432366917,
+      1 => 1433573638,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6152556c1d34471267-85736242',
+  'nocache_hash' => '310785572990b674e97-26969307',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_556c1d344f5f84_10338129',
+  'unifunc' => 'content_5572990b6f9b99_78529715',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_556c1d344f5f84_10338129')) {function content_556c1d344f5f84_10338129($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8" <?php echo '?>';?>
+<?php if ($_valid && !is_callable('content_5572990b6f9b99_78529715')) {function content_5572990b6f9b99_78529715($_smarty_tpl) {?><?php echo '<?xml';?> version="1.0" encoding="UTF-8" <?php echo '?>';?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -57,9 +57,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <dl>
   <dt onclick="javascript:show(this);">会员管理</dt>
   <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
-/job/jobpost.php" target="mainFrame">个人会员管理</a></dd>
+/user/userpage.php?page=list" target="mainFrame">个人会员管理</a></dd>
   <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /job/joblist.php" target="mainFrame">企业会员管理</a></dd>
+</dl>
+<dl>
+  <dt onclick="javascript:show(this);">栏目管理</dt>
+  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/cls/cls.php?page=list" target="mainFrame">栏目管理</a></dd>
+  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/cls/cls.php?page=create" target="mainFrame">创建栏目</a></dd>
+</dl>
+<dl>
+  <dt onclick="javascript:show(this);">资讯管理</dt>
+  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/news/newspage.php?page=type" target="mainFrame">资讯类别</a></dd>
+  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/news/newspage.php?page=list" target="mainFrame">资讯管理</a></dd>
+  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/news/newspage.php?page=add" target="mainFrame">资讯添加</a></dd>
 </dl>
 <dl>
   <dt onclick="javascript:show(this);">投票管理</dt>
@@ -74,15 +90,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 /polls/pollpage.php?page=list" target="mainFrame">我的问卷</a></dd>
   <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /polls/pollpage.php?page=create" target="mainFrame">创建问卷</a></dd>
-</dl>
-<dl>
-  <dt onclick="javascript:show(this);">资讯管理</dt>
-  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
-/news/newspage.php?page=type" target="mainFrame">资讯类别</a></dd>
-  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
-/news/newspage.php?page=list" target="mainFrame">资讯管理</a></dd>
-  <dd><a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
-/news/newspage.php?page=add" target="mainFrame">资讯添加</a></dd>
 </dl>
 <dl>
   <dt onclick="javascript:show(this);">广告管理</dt>
