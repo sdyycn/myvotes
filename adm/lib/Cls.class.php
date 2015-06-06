@@ -76,28 +76,21 @@ class Cls {
 	}
 	
 	private function add(){
-		$url_add = $this->url.'?page=add';
-//		echo $url_add;
-		if (!$this->checkUser()
-		||!$this->checkPassword()){
-			alert("管理员添加失败,用户名和密码不能为空!", $url_add);
-		//alert($this->username, $url_add);
-			return;
-		}
-		
+		$url_add = $this->url.'?page=list';
+
 		$table = $this->table;
 		$pdo = $this->pdo;
 //*/
-		$sql = "SELECT * from $table WHERE uid = '$this->uid'";
+		$sql = "SELECT * from $table WHERE mid = '$this->mid'";
 //		alert($sql, $url_add);
 		if ($pdo->rowCountSql($sql) > 0){
-			alert("用户名已存在!", $url_add);
+			alert("此菜单ID已存在!", $url_add);
 			return;
 		}
 //*/
+		$sql = "INSERT INTO $table (mid, name, type, status, privilege, pid, directory, description)";
+		$sql .= " VALUES('$this->mid', '$this->name', $this->type, $this->status, $this->privilege, $this->pid, '$this->directory', '$this->description')";
 		
-		$password = md5($this->password);
-		$sql = "INSERT INTO $table (uid, name, pwd, status, email) VALUES('$this->uid', '$this->username', '$this->password', 0, '$this->email')";
 //		alert($sql, $url_add);
 
 		if ($pdo->exec($sql) > 0) {
@@ -112,18 +105,18 @@ class Cls {
 			$res['sql'] = $sql;
 			$res['error'] = $pdo->errorInfo();
 		}
-		
-		return json_encode($res);
+		echo $res['msg'];
+	//	return json_encode($res);
 	}
 	
 	private function delete(){
 		$url_list = $this->url.'?page=list';
 		if ($this->id == null) {
-			alert("管理员删除失败!", $url_list);
+			alert("请选择要删除栏目!", $url_list);
 			return;
 		}
 		if ($this->id == 1) {
-			alert("管理员删除失败!", $url_list);
+			alert("不能删除顶级栏目!", $url_list);
 			return;
 		}
 		
@@ -148,7 +141,8 @@ class Cls {
 		}
 		
 //		echo json_encode(array('success'=>true));
-		return json_encode($res);
+		echo $res['msg'];
+		//return json_encode($res);
 	}
 	
 	private function update(){
